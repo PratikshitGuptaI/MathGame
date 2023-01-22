@@ -4,6 +4,8 @@ Console.WriteLine("Enter your name");
 var name = Console.ReadLine();
 DateTime date = DateTime.UtcNow;
 
+var games = new List<string>();
+
 Menu(name, date);
 
 
@@ -16,6 +18,7 @@ void Menu(string? name, DateTime date)
     {
     Console.WriteLine("Select any of the operation of game");
     Console.WriteLine("Below is the list:" +
+        "V:View Previous Games"+
         "A:Addition," +
         "S:Subtraction," +
         "M:Multiplication," +
@@ -25,11 +28,12 @@ void Menu(string? name, DateTime date)
     var gameSelected = Console.ReadLine();
     switch (gameSelected.Trim().ToLower())
     {
+        case "v": GetGames();break;
         case "a": AdditionGame("Addition"); break;
         case "s": SubtractionGame("Subtraction"); break;
         case "m": MultiplicationGame("Multiplication"); break;
         case "d": DivisionGame("Division"); break;
-        case "q": Environment.Exit(1); break;
+        case "q": isGameOn = false; break;
         default:
             Console.WriteLine("Right something worthwhile braahh!!");
             break;
@@ -55,8 +59,10 @@ void AdditionGame(string message)
         if (int.Parse(result) == (firstnumber + secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
         else Console.WriteLine("Incorrect Re!");
 
-        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total}");
+        if (i == 4)
+            Console.Clear(); Console.WriteLine($"Game Over.Your Final Score is {score} out of {total};If want to play more,Press any key.....");
     }
+    games.Add($"Name:{name},Date:{date}");
 }
 void SubtractionGame(string message)
 {
@@ -78,8 +84,9 @@ void SubtractionGame(string message)
         if (int.Parse(result) == (firstnumber - secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
         else Console.WriteLine("Incorrect Re!");
 
-        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total}");
+        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total};If want to play more,Press any key.....");
     }
+    games.Add($"Name:{name},Date:{date}");
 }
 void MultiplicationGame(string message)
 {
@@ -101,8 +108,9 @@ void MultiplicationGame(string message)
         if (int.Parse(result) == (firstnumber * secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
         else Console.WriteLine("Incorrect Re!");
 
-        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total}");
+        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total} ;If want to play more,Press any key.....");
     }
+    games.Add($"Name:{name},Date:{date}");
 }
 void DivisionGame(string message)
 {
@@ -122,9 +130,10 @@ void DivisionGame(string message)
         if (int.Parse(result) == (firstnumber / secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
         else Console.WriteLine("Incorrect Re!");
 
-        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of  {total}");
+        if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of  {total};If want to play more,Press any key.....");
 
     }
+    games.Add($"Name:{name},Date:{date},Score:{score},Type:{message}");
 
     /*var random = new Random();
     int score = 0;
@@ -159,4 +168,18 @@ int[] GetDivisionNumbers()
     result[0] = firstnumber;
     result[1] = secondnumber;
     return result;
+}
+
+void GetGames()
+{
+    Console.Clear();
+    Console.WriteLine("Game History");
+    Console.WriteLine("---------------");
+    foreach (var game in games)
+    {
+        Console.WriteLine(game);
+    }
+    Console.WriteLine("---------------");
+    Console.WriteLine("Press ANy key to go to main menu");
+    Console.ReadLine();
 }
