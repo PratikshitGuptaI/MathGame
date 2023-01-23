@@ -10,4 +10,6 @@ while (String.IsNullOrEmpty(name))
 }
 
 DateTime date = DateTime.UtcNow;
-menu.GameMenu(name, date);
+Console.WriteLine("Enter number of questions you want to play with:");
+var total = Convert.ToInt32(Console.ReadLine());
+menu.GameMenu(name, date,total);

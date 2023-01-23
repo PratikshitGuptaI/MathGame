@@ -6,6 +6,8 @@
         public GameType Type { get; set; }
         public int Score { get; set; }
 
+        public int Total { get; set; }
+
     }
     internal enum GameType
     {

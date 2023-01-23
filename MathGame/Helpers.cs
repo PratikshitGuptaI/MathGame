@@ -11,18 +11,19 @@ namespace MathGame
             Console.WriteLine("---------------");
             foreach (var game in games)
             {
-                Console.WriteLine($"{game.Date}-{game.Type}:{game.Score}pts");
+                Console.WriteLine($"{game.Date}-{game.Type}:{game.Score}pts out of ");
             }
             Console.WriteLine("---------------");
             Console.WriteLine("Press ANy key to go to main menu");
             Console.ReadLine();
         }
-        internal static void AddToHistory(int gameScore,GameType gameType)
+        internal static void AddToHistory(int gameScore,GameType gameType,int total)
         {
             games.Add(new Game
             {
                 Date=DateTime.Now,
                 Score = gameScore,
+                Total=total,
                 Type = gameType,
             });
         }

@@ -5,15 +5,14 @@ namespace MathGame
     internal class GameEngine
     {
 
-        internal static void AdditionGame(GameType message)
+        internal static void AdditionGame(GameType message,int totalQuestion)
         {
             Console.WriteLine($"{message} Game is Added");
             var random = new Random();
             int score = 0;
             int firstnumber;
             int secondnumber;
-            int total = 5;
-            for (int i = 0; i < total; i++)
+            for (int i = 0; i < totalQuestion; i++)
             {
                 firstnumber = random.Next(1, 9);
                 secondnumber = random.Next(1, 9);
@@ -23,21 +22,20 @@ namespace MathGame
                 if (int.Parse(result) == (firstnumber + secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
                 else Console.WriteLine("Incorrect Re!");
 
-                if (i == 4)
-                    Console.Clear(); Console.WriteLine($"Game Over.Your Final Score is {score} out of {total};If want to play more,Press any key.....");
+                if (i == totalQuestion-1)
+                    Console.Clear(); Console.WriteLine($"Game Over.Your Final Score is {score} out of {totalQuestion};If want to play more,Press any key.....");
             }
-            Helpers.AddToHistory(score,message);
+            Helpers.AddToHistory(score,message, totalQuestion);
         }
-        internal static void SubtractionGame(GameType message)
+        internal static void SubtractionGame(GameType message, int totalQuestion)
         {
             Console.WriteLine($"{message} Game is Added");
             var random = new Random();
-            int total = 5;
             int score = 0;
             int firstnumber;
             int secondnumber;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < totalQuestion; i++)
             {
                 firstnumber = random.Next(1, 9);
                 secondnumber = random.Next(1, 9);
@@ -47,20 +45,19 @@ namespace MathGame
                 if (int.Parse(result) == (firstnumber - secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
                 else Console.WriteLine("Incorrect Re!");
 
-                if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total};If want to play more,Press any key.....");
+                if (i == totalQuestion-1) Console.WriteLine($"Game Over.Your Final Score is {score} out of {totalQuestion};If want to play more,Press any key.....");
             }
-            Helpers.AddToHistory(score, message);
+            Helpers.AddToHistory(score, message,totalQuestion);
         }
-        internal static void MultiplicationGame(GameType message)
+        internal static void MultiplicationGame(GameType message, int totalQuestion)
         {
             Console.WriteLine($"{message} Game is Added");
             var random = new Random();
             int score = 0;
-            int total = 5;
             int firstnumber;
             int secondnumber;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < totalQuestion; i++)
             {
                 firstnumber = random.Next(1, 9);
                 secondnumber = random.Next(1, 9);
@@ -70,17 +67,16 @@ namespace MathGame
                 if (int.Parse(result) == (firstnumber * secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
                 else Console.WriteLine("Incorrect Re!");
 
-                if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of {total} ;If want to play more,Press any key.....");
+                if (i == totalQuestion-1) Console.WriteLine($"Game Over.Your Final Score is {score} out of {totalQuestion} ;If want to play more,Press any key.....");
             }
-            Helpers.AddToHistory(score, message);
+            Helpers.AddToHistory(score, message, totalQuestion);
         }
-        internal static void DivisionGame(GameType message)
+        internal static void DivisionGame(GameType message, int totalQuestion)
         {
             Console.WriteLine($"{message} Game is Added");
             int score = 0;
-            var total = 5;
 
-            for (int i = 0; i < total; i++)
+            for (int i = 0; i < totalQuestion; i++)
             {
                 var divisionNumbers = Helpers.GetDivisionNumbers();
                 var firstnumber = divisionNumbers[0];
@@ -92,10 +88,10 @@ namespace MathGame
                 if (int.Parse(result) == (firstnumber / secondnumber)) { Console.WriteLine("Correct Bruh,One point to Gryffindor"); score++; }
                 else Console.WriteLine("Incorrect Re!");
 
-                if (i == 4) Console.WriteLine($"Game Over.Your Final Score is {score} out of  {total};If want to play more,Press any key.....");
+                if (i == totalQuestion - 1) Console.WriteLine($"Game Over.Your Final Score is {score} out of  {totalQuestion};If want to play more,Press any key.....");
 
             }
-            Helpers.AddToHistory(score, message);
+            Helpers.AddToHistory(score, message, totalQuestion);
 
             /*var random = new Random();
             int score = 0;
